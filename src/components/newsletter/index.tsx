@@ -87,7 +87,7 @@ export const NewsLetter = () => {
             </span>
             <section className="flex center mt-4">
               <ReCAPTCHA
-                sitekey="6LeKyu4iAAAAAKbGfVcG7mMtNNAy6rivGN3D-iSX"
+                sitekey="6LeKyu4iAAAAAPDQo7aCs7RDUFtb6n-LJcd4oo5C"
                 onChange={handleStatusButton}
               ></ReCAPTCHA>
             </section>
