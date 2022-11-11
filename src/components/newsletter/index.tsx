@@ -4,36 +4,43 @@ import axios from 'axios';
 
 export const NewsLetter = () => {
 
-  const localEnv = process.env;
+  interface Subscriptor {
+    email: string;
+    nws: string;
+  }
+
   const urlMail = 'https://newsletterdev.eluniversal.com.mx/v1/newsletter/register-new-user';
   const logoNewsLetter = 'https://www.viveusa.mx/sites/all/modules/widget_newsletter/css/logo-viveusa.svg';
   const messages = {
     default: 'Recibe en tu correo las noticias más destacadas para viajar, trabajar y vivir en EU',
     success: 'Gracias por registrarte, te enviamos un correo para confirmar tu dirección.'
   }
-  const emailRegEx = '/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i';
-
+  const emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+  const [validateEmail, setValidateEmail] = useState(false);
   const [buttonStatus, setButtonStatus] = useState(true);
   const [message, setMessage] = useState(messages.default);
-  const [subscriptor, setSubscriptor] = useState({
+  const [subscriptor, setSubscriptor] = useState<Subscriptor>({
     email: '',
     nws: 'nwsl37'
   })
 
-  const handleStatusButton = (value: any) => {
-    setButtonStatus(false);
-    console.log(buttonStatus);
-    console.log(value);
+  const handleStatusButton = (value: string | null) => {
+    let isCaptchaChecked = value !== null;
+    console.log(isCaptchaChecked);
+    if (validateEmail && isCaptchaChecked) {
+      setButtonStatus(false);
+    }
   }
 
-  const handleGetSubscriptor = (event: string) => {
-    setSubscriptor({ ...subscriptor, email: event })
-    console.log('subscriptor', subscriptor)
+  const handleCheckSubscriptor = (email: string) => {
+    setValidateEmail(emailRegEx.test(subscriptor.email));
+    setSubscriptor({ ...subscriptor, email: email });
+    console.log('validate email', validateEmail);
+    // validateEmail ? setButtonStatus(true) : setButtonStatus(false);
   }
 
-  const handleSubscription = (event: any) => {
-    event.preventDefault();
-    console.log('handleSubscription', event);
+  const handleSendSubscription = () => {
+    // event.preventDefault();
 
     axios.post(urlMail, subscriptor)
       .then((response) => {
@@ -67,17 +74,17 @@ export const NewsLetter = () => {
                 type="email"
                 placeholder="TU E-MAIL"
                 required
-                onChange={(e) => { handleGetSubscriptor(e.target.value) }}
-                pattern={emailRegEx}
+                onChange={(e) => { handleCheckSubscriptor(e.target.value) }}
               />
               <button
                 className=""
                 disabled={buttonStatus}
-                onClick={handleSubscription}
+                onClick={handleSendSubscription}
               >Suscribirme</button>
             </div>
+            {!validateEmail && <span className='text-[10px] text-[#aa0000]'>Formato no valido</span>}
             <span
-              className="text-[11px] color-[#d3eefd] mt-2"
+              className="text-[11px] text-[#d3eefd] mt-2"
             >Al registrarme acepto los <a rel="noreferrer" href="https://www.eluniversal.com.mx/politicas-de-privacidad"
               target="_blank"
               className="underline"
