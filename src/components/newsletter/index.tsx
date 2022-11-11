@@ -13,15 +13,15 @@ export const NewsLetter = () => {
   }
   const emailRegEx = '/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i';
 
-  const [buttonStatus, setButtonStatus] = useState(false);
-  const [message, setMessage] = useState(messages.default)
+  const [buttonStatus, setButtonStatus] = useState(true);
+  const [message, setMessage] = useState(messages.default);
   const [subscriptor, setSubscriptor] = useState({
     email: '',
     nws: 'nwsl37'
   })
 
   const handleStatusButton = (value: any) => {
-    setButtonStatus(true);
+    setButtonStatus(false);
     console.log(buttonStatus);
     console.log(value);
   }
@@ -41,8 +41,6 @@ export const NewsLetter = () => {
         setMessage(messages.success);
       })
   }
-
-  console.log('localEnv', localEnv)
 
   return (
     <Fragment>
@@ -85,9 +83,9 @@ export const NewsLetter = () => {
               className="underline"
             >términos y condiciones</a>
             </span>
-            <section className="flex center mt-4">
+            <section className="flex justify-center mt-4">
               <ReCAPTCHA
-                sitekey="6LeKyu4iAAAAAPDQo7aCs7RDUFtb6n-LJcd4oo5C"
+                sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
                 onChange={handleStatusButton}
               ></ReCAPTCHA>
             </section>
