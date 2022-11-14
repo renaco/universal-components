@@ -26,7 +26,7 @@ export const NewsLetter = () => {
 
   const handleStatusButton = (value: string | null) => {
     let isCaptchaChecked = value !== null;
-    console.log(isCaptchaChecked);
+    // console.log(isCaptchaChecked);
     if (validateEmail && isCaptchaChecked) {
       setButtonStatus(false);
     }
@@ -36,7 +36,6 @@ export const NewsLetter = () => {
     setValidateEmail(emailRegEx.test(subscriptor.email));
     setSubscriptor({ ...subscriptor, email: email });
     console.log('validate email', validateEmail);
-    // validateEmail ? setButtonStatus(true) : setButtonStatus(false);
   }
 
   const handleSendSubscription = () => {
@@ -51,53 +50,54 @@ export const NewsLetter = () => {
 
   return (
     <Fragment>
-      <div className="contenedor-gral-widget m-[10px] p-5">
+      <div className="text-[white] font-['Work_Sans'] m-[10px] p-5 bg-[length:100%_100%] bg-[url('https://www.viveusa.mx/sites/all/modules/widget_newsletter/css/back-widget.webp')]">
         <div className="my-5 flex justify-between">
-          <img src={logoNewsLetter} alt="viveusa logo" className="block w-[60px] md:w-[120px]" />
-          <h3 className="texto-cabeza">Newsletter</h3>
+          <img
+            src={logoNewsLetter}
+            alt="ViveUSA"
+            className="block w-[60px] md:w-[120px]"
+          />
+          <h3 className="text-[30px] font-[500] leading-6">Newsletter</h3>
         </div>
         <p
-          className="texto-principal news-email-send-ok"
+          className="my-3 text-[17px]"
           data-gtm-vis-first-on-screen-37354430_60="184455"
           data-gtm-vis-recent-on-screen-37354430_60="1069624"
           data-gtm-vis-total-visible-time-37354430_60="100"
           data-gtm-vis-has-fired-37354430_60="1"
         >{message}</p>
-        <div
-          className="bottom-[10px]">
-          <form
-            className="flex flex-col"
-            id="register-form-newsletter-11">
-            <div className="">
-              <input
-                className="inputwg"
-                type="email"
-                placeholder="TU E-MAIL"
-                required
-                onChange={(e) => { handleCheckSubscriptor(e.target.value) }}
-              />
-              <button
-                className=""
-                disabled={buttonStatus}
-                onClick={handleSendSubscription}
-              >Suscribirme</button>
-            </div>
-            {!validateEmail && <span className='text-[10px] text-[#aa0000]'>Formato no valido</span>}
-            <span
-              className="text-[11px] text-[#d3eefd] mt-2"
-            >Al registrarme acepto los <a rel="noreferrer" href="https://www.eluniversal.com.mx/politicas-de-privacidad"
-              target="_blank"
-              className="underline"
-            >términos y condiciones</a>
-            </span>
-            <section className="flex justify-center mt-4">
-              <ReCAPTCHA
-                sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                onChange={handleStatusButton}
-              ></ReCAPTCHA>
-            </section>
-          </form>
-        </div>
+        <form
+          className="flex flex-col bottom-[10px]"
+          id="register-form-newsletter-11">
+          <div className="">
+            <input
+              className="py-1 px-3 border-[1px] border-solid border-[#a5a5a5] text-[#000000] m-0 w-[48%] max-w-[300px] rounded-l-lg"
+              type="email"
+              placeholder="TU E-MAIL"
+              required
+              onChange={(e) => { handleCheckSubscriptor(e.target.value) }}
+            />
+            <button
+              className="bg-[#ed313b] border-[0.5px] border-solid border-[#ed313b] uppercase tracking-[1px] py-1 px-3 font-[600] rounded-r-lg -ml-[7px] disabled:bg-[grey] disabled:border-[grey] disabled:cursor-not-allowed"
+              disabled={buttonStatus}
+              onClick={handleSendSubscription}
+            >Suscribirme</button>
+          </div>
+          {!validateEmail && <span className='text-[10px] text-[#aa0000]'>Formato no valido</span>}
+          <span
+            className="text-[11px] text-[#d3eefd] mt-2"
+          >Al registrarme acepto los <a rel="noreferrer" href="https://www.eluniversal.com.mx/politicas-de-privacidad"
+            target="_blank"
+            className="underline"
+          >términos y condiciones</a>
+          </span>
+          <section className="flex justify-center mt-4">
+            <ReCAPTCHA
+              sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+              onChange={handleStatusButton}
+            ></ReCAPTCHA>
+          </section>
+        </form>
       </div>
     </Fragment>
   )
