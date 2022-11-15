@@ -16,34 +16,40 @@ export const NewsLetter = () => {
     success: 'Gracias por registrarte, te enviamos un correo para confirmar tu dirección.'
   }
   const emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-  const [validateEmail, setValidateEmail] = useState(false);
-  const [buttonStatus, setButtonStatus] = useState(true);
-  const [message, setMessage] = useState(messages.default);
+  const [validateEmail, setValidateEmail] = useState<Boolean>(false);
+  const [captchaChecked, setCaptchaChecked] = useState<Boolean>(false);
+  const [buttonStatus, setButtonStatus] = useState<any>(false);
+  const [message, setMessage] = useState<String>(messages.default);
   const [subscriptor, setSubscriptor] = useState<Subscriptor>({
     email: '',
     nws: 'nwsl37'
-  })
+  });
 
-  const handleStatusButton = (value: string | null) => {
+  const handleCaptchaCheck = (value: string | null) => {
     let isCaptchaChecked = value !== null;
-    // console.log(isCaptchaChecked);
-    if (validateEmail && isCaptchaChecked) {
-      setButtonStatus(false);
-    }
+    setCaptchaChecked(isCaptchaChecked)
+    checkActivateButton();
   }
 
-  const handleCheckSubscriptor = (email: string) => {
-    setValidateEmail(emailRegEx.test(subscriptor.email));
-    setSubscriptor({ ...subscriptor, email: email });
-    console.log('validate email', validateEmail);
+  const handleCheckSubscriptor = (e: any) => {
+    let email = e.target.value;
+    let isValidEmail = emailRegEx.test(email);
+    if (isValidEmail) {
+      setSubscriptor({ ...subscriptor, email: email });
+    }
+    setValidateEmail(isValidEmail);
+    checkActivateButton();
+  }
+
+  const checkActivateButton = () => {
+    let emailChecked = validateEmail && captchaChecked;
+    setButtonStatus(emailChecked);
   }
 
   const handleSendSubscription = () => {
-    // event.preventDefault();
-
     axios.post(urlMail, subscriptor)
       .then((response) => {
-        console.log('response.data', response.data);
+        console.log('response.data', response);
         setMessage(messages.success);
       })
   }
@@ -68,22 +74,23 @@ export const NewsLetter = () => {
         >{message}</p>
         <form
           className="flex flex-col bottom-[10px]"
-          id="register-form-newsletter-11">
+          onSubmit={() => { return false }}
+        >
           <div className="">
             <input
-              className="py-1 px-3 border-[1px] border-solid border-[#a5a5a5] text-[#000000] m-0 w-[48%] max-w-[300px] rounded-l-lg"
+              className="py-1 px-3 border-[1px] border-solid border-[#a5a5a5] text-[#000000] m-0 w-[48%] outline-0 max-w-[300px] rounded-l-lg"
               type="email"
               placeholder="TU E-MAIL"
               required
-              onChange={(e) => { handleCheckSubscriptor(e.target.value) }}
+              onChange={handleCheckSubscriptor}
             />
             <button
-              className="bg-[#ed313b] border-[0.5px] border-solid border-[#ed313b] uppercase tracking-[1px] py-1 px-3 font-[600] rounded-r-lg -ml-[7px] disabled:bg-[grey] disabled:border-[grey] disabled:cursor-not-allowed"
-              disabled={buttonStatus}
+              className="bg-[#ed313b] border-[0.5px] border-solid border-[#ed313b] uppercase tracking-[1px] py-1 px-3 font-[600] rounded-r-lg -ml-[7px]"
+              disabled={!buttonStatus}
               onClick={handleSendSubscription}
             >Suscribirme</button>
           </div>
-          {!validateEmail && <span className='text-[10px] text-[#aa0000]'>Formato no valido</span>}
+          {!validateEmail && <span className='text-[11px] mt-1 text-[#aa0000]'>Formato no valido</span>}
           <span
             className="text-[11px] text-[#d3eefd] mt-2"
           >Al registrarme acepto los <a rel="noreferrer" href="https://www.eluniversal.com.mx/politicas-de-privacidad"
@@ -94,11 +101,13 @@ export const NewsLetter = () => {
           <section className="flex justify-center mt-4">
             <ReCAPTCHA
               sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-              onChange={handleStatusButton}
+              onChange={handleCaptchaCheck}
             ></ReCAPTCHA>
           </section>
         </form>
       </div>
+      validateEmail {JSON.stringify(validateEmail)} <br />
+      buttonStatus {JSON.stringify(buttonStatus)}
     </Fragment>
   )
 }
