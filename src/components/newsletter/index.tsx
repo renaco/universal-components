@@ -18,32 +18,26 @@ export const NewsLetter = () => {
   const emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
   const [validateEmail, setValidateEmail] = useState<Boolean>(false);
   const [captchaChecked, setCaptchaChecked] = useState<Boolean>(false);
-  const [buttonStatus, setButtonStatus] = useState<any>(false);
   const [message, setMessage] = useState<String>(messages.default);
   const [subscriptor, setSubscriptor] = useState<Subscriptor>({
-    email: '',
+    email: 'tuemail@dominio.com',
     nws: 'nwsl37'
   });
 
   const handleCaptchaCheck = (value: string | null) => {
-    let isCaptchaChecked = value !== null;
-    setCaptchaChecked(isCaptchaChecked)
-    checkActivateButton();
+    let isCaptchaChecked = value !== undefined;
+    setCaptchaChecked(isCaptchaChecked);
+    validateEmailAndCheck();
   }
 
-  const handleCheckSubscriptor = (e: any) => {
+  const handleCheckEmailSubscriptor = (e: any) => {
     let email = e.target.value;
     let isValidEmail = emailRegEx.test(email);
-    if (isValidEmail) {
+    if (isValidEmail && email.length > 0) {
       setSubscriptor({ ...subscriptor, email: email });
     }
     setValidateEmail(isValidEmail);
-    checkActivateButton();
-  }
-
-  const checkActivateButton = () => {
-    let emailChecked = validateEmail && captchaChecked;
-    setButtonStatus(emailChecked);
+    validateEmailAndCheck();
   }
 
   const handleSendSubscription = () => {
@@ -52,6 +46,11 @@ export const NewsLetter = () => {
         console.log('response.data', response);
         setMessage(messages.success);
       })
+  }
+
+  const validateEmailAndCheck = () => {
+    console.log('validateEmailAndCheck', !(validateEmail === captchaChecked))
+    return !(validateEmail === captchaChecked);
   }
 
   return (
@@ -82,15 +81,16 @@ export const NewsLetter = () => {
               type="email"
               placeholder="TU E-MAIL"
               required
-              onChange={handleCheckSubscriptor}
+              onChange={handleCheckEmailSubscriptor}
             />
             <button
               className="bg-[#ed313b] border-[0.5px] border-solid border-[#ed313b] uppercase tracking-[1px] py-1 px-3 font-[600] rounded-r-lg -ml-[7px]"
-              disabled={!buttonStatus}
+              disabled={validateEmailAndCheck()}
               onClick={handleSendSubscription}
             >Suscribirme</button>
           </div>
           {!validateEmail && <span className='text-[11px] mt-1 text-[#aa0000]'>Formato no valido</span>}
+          {JSON.stringify(validateEmailAndCheck)}
           <span
             className="text-[11px] text-[#d3eefd] mt-2"
           >Al registrarme acepto los <a rel="noreferrer" href="https://www.eluniversal.com.mx/politicas-de-privacidad"
@@ -106,8 +106,8 @@ export const NewsLetter = () => {
           </section>
         </form>
       </div>
-      validateEmail {JSON.stringify(validateEmail)} <br />
-      buttonStatus {JSON.stringify(buttonStatus)}
+      {/* validateEmail {JSON.stringify(validateEmail)} <br />
+      captchaChecked {JSON.stringify(captchaChecked)} <br /> */}
     </Fragment>
   )
 }
