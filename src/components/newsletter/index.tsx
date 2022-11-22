@@ -15,12 +15,16 @@ export const NewsLetter = () => {
     default: 'Recibe en tu correo las noticias más destacadas para viajar, trabajar y vivir en EU',
     success: 'Gracias por registrarte, te enviamos un correo para confirmar tu dirección.'
   }
+  const validation = {
+    error: '',
+    format: 'Formato invalido'
+  }
   const emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
   const [validateEmail, setValidateEmail] = useState<Boolean>(false);
   const [captchaChecked, setCaptchaChecked] = useState<Boolean>(false);
   const [message, setMessage] = useState<String>(messages.default);
   const [subscriptor, setSubscriptor] = useState<Subscriptor>({
-    email: 'tuemail@dominio.com',
+    email: '',
     nws: 'nwsl37'
   });
 
@@ -43,13 +47,11 @@ export const NewsLetter = () => {
   const handleSendSubscription = () => {
     axios.post(urlMail, subscriptor)
       .then((response) => {
-        console.log('response.data', response);
         setMessage(messages.success);
       })
   }
 
   const validateEmailAndCheck = () => {
-    console.log('validateEmailAndCheck', !(validateEmail === captchaChecked))
     return !(validateEmail === captchaChecked);
   }
 
@@ -66,10 +68,6 @@ export const NewsLetter = () => {
         </div>
         <p
           className="my-3 text-[17px]"
-          data-gtm-vis-first-on-screen-37354430_60="184455"
-          data-gtm-vis-recent-on-screen-37354430_60="1069624"
-          data-gtm-vis-total-visible-time-37354430_60="100"
-          data-gtm-vis-has-fired-37354430_60="1"
         >{message}</p>
         <form
           className="flex flex-col bottom-[10px]"
@@ -77,22 +75,21 @@ export const NewsLetter = () => {
         >
           <div className="">
             <input
-              className="py-1 px-3 border-[1px] border-solid border-[#a5a5a5] text-[#000000] m-0 w-[48%] outline-0 max-w-[300px] rounded-l-lg"
+              className="py-1 px-3 border-[1px] border-solid border-grey-100 text-black-0 m-0 w-[48%] outline-0 max-w-[300px] rounded-l-lg"
               type="email"
               placeholder="TU E-MAIL"
               required
               onChange={handleCheckEmailSubscriptor}
             />
             <button
-              className="bg-[#ed313b] border-[0.5px] border-solid border-[#ed313b] uppercase tracking-[1px] py-1 px-3 font-[600] rounded-r-lg -ml-[7px]"
+              className="bg-red-200 border-[0.5px] border-solid border-red-200 outline-0 uppercase tracking-[1px] py-1 px-3 font-[600] rounded-r-lg -ml-[7px]"
               disabled={validateEmailAndCheck()}
               onClick={handleSendSubscription}
             >Suscribirme</button>
           </div>
-          {!validateEmail && <span className='text-[11px] mt-1 text-[#aa0000]'>Formato no valido</span>}
-          {JSON.stringify(validateEmailAndCheck)}
+          {!validateEmail && <span className='text-[11px] mt-1 text-red-0'>{validation.format}</span>}
           <span
-            className="text-[11px] text-[#d3eefd] mt-2"
+            className="text-[11px] text-grey-0 mt-2"
           >Al registrarme acepto los <a rel="noreferrer" href="https://www.eluniversal.com.mx/politicas-de-privacidad"
             target="_blank"
             className="underline"
@@ -106,8 +103,6 @@ export const NewsLetter = () => {
           </section>
         </form>
       </div>
-      {/* validateEmail {JSON.stringify(validateEmail)} <br />
-      captchaChecked {JSON.stringify(captchaChecked)} <br /> */}
     </Fragment>
   )
 }
