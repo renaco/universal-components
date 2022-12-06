@@ -1,0 +1,125 @@
+// colors
+$color-watermelonade: rgb(232, 74, 80);
+$color-dungeon-keeper: rgb(237, 49, 59);
+$color-ottoman-red: rgb(238, 33, 45);
+$color-heat-signature: rgb(221, 0, 17);
+$color-errigal-white: rgb(240, 242, 247);
+$color-lost-at-sea: rgb(135, 152, 173);
+$color-good-karma: rgb(42, 51, 120);
+$color-lava-stone: rgb(58, 64, 91);
+$color-lava-stone-2: rgb(57, 63, 91);
+$color-cloudless: rgb(211, 238, 253);
+$color-wing-commander: rgb(0, 100, 181);
+$color-grand-bleu: rgb(0, 83, 131);
+$color-cascara: rgb(241, 67, 60);
+$color-white: rgba(255, 255, 255, 0.75);
+$color-white-2: rgb(255, 255, 255);
+$color-vintage-porcelain: rgb(238, 238, 238);
+$color-concrete: rgb(208, 208, 208);
+$color-pigeon: rgb(174, 174, 174);
+$color-quicksilver: rgb(165, 165, 165);
+$color-walrus: rgb(155, 155, 155);
+$color-excalibur: rgb(102, 102, 102);
+$color-black: rgb(0, 0, 0);
+
+// typography 
+$font-1: normal normal 700 61px/72px "work sans", sans-serif;
+$font-2: normal normal 700 40px/44px "work sans", sans-serif;
+$font-3: normal normal 700 40px/44px "work sans", sans-serif;
+$font-4: normal normal 300 35px/42px "work sans", sans-serif;
+$font-5: normal normal 500 30px/25px "work sans", sans-serif;
+$font-6: normal normal 300 30px/normal "work sans", sans-serif;
+$font-7: normal normal 700 28px/31px "work sans", sans-serif;
+$font-8: normal normal 900 27px/27px "font awesome 5 free";
+$font-9: normal normal 400 24px/28px rubik, Helvetica, Arial, serif;
+$font-10: normal normal 600 20px/24px "work sans", sans-serif;
+$font-11: normal normal 600 20px/24px "work sans", sans-serif;
+$font-12: normal normal 300 20px/24px "work sans", sans-serif;
+$font-13: normal normal 600 20px/24px "work sans", sans-serif;
+$font-14: normal normal 400 18px/18px "font awesome 5 brands";
+$font-15: normal normal 400 18px/19px "work sans", sans-serif;
+$font-16: normal normal 600 18px/21px "work sans", sans-serif;
+$font-17: normal normal 400 18px/18px "font awesome 5 brands";
+$font-18: normal normal 400 18px/21px "work sans", sans-serif;
+$font-19: normal normal 600 18px/21px "work sans", sans-serif;
+$font-20: normal normal 400 17px/normal "work sans", sans-serif;
+$font-21: normal normal 900 16px/16px "font awesome 5 free";
+$font-22: normal normal 400 16px/19px "work sans", sans-serif;
+$font-23: normal normal 700 16px/19px "work sans", sans-serif;
+$font-24: normal normal 400 16px/normal "work sans", sans-serif;
+$font-25: normal normal 400 16px/normal "Times New Roman";
+$font-26: normal normal 400 16px/normal "work sans", sans-serif;
+$font-27: normal normal 400 16px/21px "work sans", sans-serif;
+$font-28: normal normal 900 16px/16px "font awesome 5 free";
+$font-29: normal normal 400 16px/21px "work sans", sans-serif;
+$font-30: normal normal 400 16px/normal "Times New Roman";
+$font-31: normal normal 700 16px/normal "work sans", sans-serif;
+$font-32: normal normal 400 16px/normal "work sans", sans-serif;
+$font-33: normal normal 400 16px/normal "work sans", sans-serif;
+$font-34: normal normal 900 16px/16px "font awesome 5 free";
+$font-35: normal normal 400 16px/20px "work sans", sans-serif;
+$font-36: normal normal 300 16px/20px "work sans", sans-serif;
+$font-37: normal normal 400 16px/normal "work sans", sans-serif;
+$font-38: normal normal 500 15px/21px "work sans", sans-serif;
+$font-39: normal normal 400 14px/14px "font awesome 5 free";
+$font-40: normal normal 700 14px/18px "work sans", sans-serif;
+$font-41: normal normal 700 14px/18px "work sans", sans-serif;
+$font-42: normal normal 300 14px/24px "work sans", sans-serif;
+$font-43: normal normal 700 14px/24px "work sans", sans-serif;
+$font-44: normal normal 300 14px/18px "work sans", sans-serif;
+$font-45: normal normal 500 14px/normal "work sans", sans-serif;
+$font-46: normal normal 500 14px/16px "work sans", sans-serif;
+$font-47: normal normal 400 13.3333px/normal Arial;
+$font-48: normal normal 400 13.3333px/normal Arial;
+$font-49: normal normal 600 13.3333px/normal Arial;
+$font-50: normal normal 400 13px/15px "work sans", sans-serif;
+$font-51: normal normal 900 12px/normal "work sans", sans-serif;
+$font-52: normal normal 400 11px/normal "work sans", sans-serif;
+$font-53: normal normal 400 11px/normal "work sans", sans-serif;
+
+// vertical spacing
+$vspace-1: 1px;
+$vspace-2: 3px;
+$vspace-3: 4px;
+$vspace-4: 5px;
+$vspace-5: 7px;
+$vspace-6: 10px;
+$vspace-7: 12px;
+$vspace-8: 15px;
+$vspace-9: 1em;
+$vspace-10: 17px;
+$vspace-11: 18px;
+$vspace-12: 20px;
+$vspace-13: 25px;
+$vspace-14: 26px;
+
+// horizontal spacing
+$hspace-1: 1px;
+$hspace-2: 3px;
+$hspace-3: 5px;
+$hspace-4: -5px;
+$hspace-5: -7px;
+$hspace-6: 8px;
+$hspace-7: 10px;
+$hspace-8: 12px;
+$hspace-9: 15px;
+$hspace-10: 17px;
+$hspace-11: 20px;
+$hspace-12: 29px;
+$hspace-13: 470px;
+$hspace-14: 551px;
+$hspace-15: -682px;
+
+// border radii
+$border-radius-1: 50%;
+$border-radius-2: 5px 0px 0px 5px;
+$border-radius-3: 0px 5px 5px 0px;
+$border-radius-4: 5px;
+$border-radius-5: 4px;
+
+// shadows
+$shadow-1: rgba(221, 221, 221, 0.5) 0px 2px 4px 0px;
+
+// motions
+$transition-1: all 0.5s ease 0s;
+$transition-2: all 0.4s ease-out 0s;
