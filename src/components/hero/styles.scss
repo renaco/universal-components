@@ -10,10 +10,20 @@
 
 .hero_image {
   display: inline;
-  height: 400px;
   outline: 0;
   filter: brightness(0.8);
   animation-name: filtro2;
   animation-duration: 4s;
   animation-delay: 2s;
+}
+
+.hero_wrapper {
+  outline: 0;
+  max-width: 900px;
+  transform: translate(-50%, -50%);
+}
+
+.is-shadow {
+  outline: 0;
+  text-shadow: rgba(0, 0, 0, 0.75) 1px 1px 0;
 }
