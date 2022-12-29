@@ -15,10 +15,10 @@ export const NewsLetter = () => {
     default: 'Recibe en tu correo las noticias más destacadas para viajar, trabajar y vivir en EU',
     success: 'Gracias por registrarte, te enviamos un correo para confirmar tu dirección.'
   }
-  const validation = {
-    error: '',
-    format: 'Formato invalido'
-  }
+  // const validation = {
+  //   error: '',
+  //   format: 'Formato invalido'
+  // }
   const emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
   const [validateEmail, setValidateEmail] = useState<Boolean>(false);
   const [captchaChecked, setCaptchaChecked] = useState<Boolean>(false);
@@ -78,22 +78,26 @@ export const NewsLetter = () => {
               className="py-1 px-3 border-[1px] border-solid border-grey-100 text-black-0 m-0 w-[48%] outline-0 max-w-[300px] rounded-l-lg"
               type="email"
               placeholder="TU E-MAIL"
-              required
+              // required
               onChange={handleCheckEmailSubscriptor}
             />
             <button
               className="bg-red-200 border-[0.5px] border-solid border-red-200 outline-0 uppercase tracking-[1px] py-1 px-3 font-[600] rounded-r-lg -ml-[7px]"
               disabled={validateEmailAndCheck()}
               onClick={handleSendSubscription}
+              type="button"
             >Suscribirme</button>
           </div>
-          {!validateEmail && <span className='text-[11px] mt-1 text-red-0'>{validation.format}</span>}
+          {/* {!validateEmail && <span className='text-[11px] mt-1 text-red-0'>{validation.format}</span>} */}
           <span
             className="text-[11px] text-grey-0 mt-2"
-          >Al registrarme acepto los <a rel="noreferrer" href="https://www.eluniversal.com.mx/politicas-de-privacidad"
-            target="_blank"
-            className="underline"
-          >términos y condiciones</a>
+          >Al registrarme acepto los 
+            <a
+              rel="noreferrer"
+              href="https://www.eluniversal.com.mx/politicas-de-privacidad"
+              target="_blank"
+              className="underline"
+            >términos y condiciones</a>
           </span>
           <section className="flex justify-center mt-4">
             <ReCAPTCHA
