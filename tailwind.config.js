@@ -24,6 +24,10 @@ module.exports = {
       white: '#FFFFFF',
       yellow: {
         100: '#fdd600',
+      },
+      sky: {
+        700: '#447ea2',
+        800: '#447ea2',
       }
     }
   },

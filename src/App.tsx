@@ -4,6 +4,7 @@ import { Hero } from './components/hero'
 import UniversalNewsletter from './components/newsletter/universal';
 import ViveUSANewsletter from './components/newsletter/viveusa';
 import ClaseNewsLetter from './components/newsletter/clase';
+import Cookies from './components/cookies';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <UniversalNewsletter />
       <ViveUSANewsletter />
       <ClaseNewsLetter />
+      <Cookies />
     </div>
   );
 }
