@@ -1,21 +1,19 @@
-import './App.css';
-import { NewsLetter } from './components/newsletter'
-import { Hero } from './components/hero'
-import UniversalNewsletter from './components/newsletter/universal';
-import ViveUSANewsletter from './components/newsletter/viveusa';
-import ClaseNewsLetter from './components/newsletter/clase';
-import Cookies from './components/cookies';
+// import './App.css';
+// import { NewsLetter } from './components/newsletter'
+
+// import Cookies from './components/cookies';
+// import Home from './../pages/index'
 
 function App() {
   return (
-    <div className="App">
-      <NewsLetter />
-      <Hero />
-      <UniversalNewsletter />
-      <ViveUSANewsletter />
-      <ClaseNewsLetter />
-      <Cookies />
-    </div>
+    <>
+    {/* <Home />
+    // <div className="App">
+    //   <NewsLetter />
+
+    //   <Cookies />
+    // </div> */}
+    </>
   );
 }
 
