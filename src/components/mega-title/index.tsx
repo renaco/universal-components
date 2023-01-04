@@ -14,7 +14,7 @@ const MegaTitle = () => {
       <a
         href="mundial-futbol/paises-bajos-qatar-en-vivo-fase-de-grupos-del-mundial-qatar-2022"
         target="_self"
-        className="inline p-0 mb-6 text-4xl md:text-7xl font-black text-center break-words text-[#3a405b] hover:cursor-pointer hover:text-sky-800 font-['Work_Sans'] no-underline"
+        className="inline p-0 mb-6 text-4xl md:text-[80px] text-center break-words text-[#3a405b] hover:cursor-pointer hover:text-sky-800 font-['Work_Sans'] no-underline font-bold leading-none"
         style={{ outline: 0 }}
       >
         Qatar 2022: Países Bajos vence a Qatar y clasifica a los octavos de final
